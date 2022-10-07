@@ -14,9 +14,28 @@ export class LoginService {
     ) {
     }
 
-    async getAccount(query: QueryLoginDto) {
+    async getAccounts(query: QueryLoginDto) {
         try {
             const user = await this.loginRepository.find({ select: { account_id: true, email: true }, where: { email: query.email.toLowerCase() } })
+            return {
+                user
+            }
+        } catch (error) {
+            throw new HttpException(error.message, HttpStatus.BAD_REQUEST)
+        }
+    }
+
+    async getAccount(query: QueryLoginDto){
+        try {
+            const { email, userid } = query
+            const where = {}
+            if(email){
+                where['email'] = email.toLowerCase();
+            }
+            if(userid){
+                where['userid'] = userid;
+            }
+            const user = await this.loginRepository.findOne({ select: { account_id: true, email: true }, where })
             return {
                 user
             }
@@ -28,7 +47,7 @@ export class LoginService {
     async register(body: LoginDto) {
         const account = await this.loginRepository.findOne({ select: { userid: true }, where: { userid: body.userid } })
         if (account) {
-            throw new HttpException('Ya existe este nombre de usuario', HttpStatus.BAD_REQUEST)
+            throw new HttpException('Ya existe este usuario', HttpStatus.BAD_REQUEST)
         }
         const login = new Login()
         login.email = body.email;

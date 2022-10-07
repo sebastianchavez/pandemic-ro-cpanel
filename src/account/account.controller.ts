@@ -29,6 +29,16 @@ export class AccountController {
             const response = await this.loginService.register(body)
             res.status(HttpStatus.OK).send({ message: 'Usuario registado con éxito', idUser: response.raw.insertId })
         } catch (error) {
+            res.status(HttpStatus.BAD_REQUEST).json(error)
+        }
+    }
+
+    @Get('get-accounts')
+    async getAccounts(@Query() query: QueryLoginDto, @Res() res: Response) {
+        try {
+            const response = await this.loginService.getAccounts(query)
+            res.status(HttpStatus.OK).send(response.user)
+        } catch (error) {
             res.status(HttpStatus.BAD_REQUEST).send(error)
         }
     }
@@ -37,7 +47,7 @@ export class AccountController {
     async getAccount(@Query() query: QueryLoginDto, @Res() res: Response) {
         try {
             const response = await this.loginService.getAccount(query)
-            res.status(HttpStatus.OK).send(response.user)
+            res.status(HttpStatus.OK).send(response)
         } catch (error) {
             res.status(HttpStatus.BAD_REQUEST).send(error)
         }
