@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { LoginDto } from 'src/account/dtos/login.dto';
 import { QueryLoginDto } from 'src/account/dtos/query-login.dto';
+import { Account } from 'src/account/entities/account.entity';
 import { Login } from 'src/account/entities/login.entity';
 import { Repository } from 'typeorm';
 
@@ -11,6 +12,8 @@ export class LoginService {
     constructor(
         @InjectRepository(Login)
         private loginRepository: Repository<Login>,
+        @InjectRepository(Account)
+        private accountRepository: Repository<Account>
     ) {
     }
 
@@ -35,9 +38,11 @@ export class LoginService {
             if(userid){
                 where['userid'] = userid;
             }
-            const user = await this.loginRepository.findOne({ select: { account_id: true, email: true }, where })
+            const loginUser = await this.loginRepository.findOne({ select: { account_id: true, email: true }, where })
+            const accountUser = await this.accountRepository.find({ where: { name: userid } })
             return {
-                user
+                loginUser,
+                accountUser
             }
         } catch (error) {
             throw new HttpException(error.message, HttpStatus.BAD_REQUEST)
