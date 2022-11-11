@@ -1,17 +1,16 @@
 import { Module } from '@nestjs/common';
 import { AccountController } from './account.controller';
-import { LoginService } from './services/login/login.service';
-import { HealthService } from './services/health/health.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Login } from './entities/login.entity';
 import { HttpModule } from '@nestjs/axios';
+import { AccountService } from './services/account/account.service';
+import { Account } from './entities/account.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Login]),
+    TypeOrmModule.forFeature([Account]),
     HttpModule,
   ],
   controllers: [AccountController],
-  providers: [LoginService, HealthService]
+  providers: [AccountService]
 })
 export class AccountModule { }

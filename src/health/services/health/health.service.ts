@@ -1,7 +1,6 @@
-import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Login } from 'src/account/entities/login.entity';
+import { Login } from 'src/login/entities/login.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -11,7 +10,6 @@ export class HealthService {
         @InjectRepository(Login)
         private loginRepository: Repository<Login>,
     ) {
-
     }
 
     getStatus() {

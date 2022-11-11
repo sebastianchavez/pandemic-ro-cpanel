@@ -1,9 +1,8 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { LoginDto } from 'src/account/dtos/login.dto';
-import { QueryLoginDto } from 'src/account/dtos/query-login.dto';
-import { Account } from 'src/account/entities/account.entity';
-import { Login } from 'src/account/entities/login.entity';
+import { LoginDto } from 'src/login/dtos/login.dto';
+import { QueryLoginDto } from 'src/login/dtos/query-login.dto';
+import { Login } from 'src/login/entities/login.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -12,12 +11,10 @@ export class LoginService {
     constructor(
         @InjectRepository(Login)
         private loginRepository: Repository<Login>,
-        @InjectRepository(Account)
-        private accountRepository: Repository<Account>
     ) {
     }
 
-    async getAccounts(query: QueryLoginDto) {
+    async getLogins(query: QueryLoginDto) {
         try {
             const user = await this.loginRepository.find({ select: { account_id: true, email: true }, where: { email: query.email.toLowerCase() } })
             return {
@@ -28,7 +25,7 @@ export class LoginService {
         }
     }
 
-    async getAccount(query: QueryLoginDto){
+    async getLogin(query: QueryLoginDto){
         try {
             const { email, userid } = query
             const where = {}
@@ -39,10 +36,10 @@ export class LoginService {
                 where['userid'] = userid;
             }
             const loginUser = await this.loginRepository.findOne({ select: { account_id: true, email: true }, where })
-            const accountUser = await this.accountRepository.find({ where: { name: userid } })
+            // const accountUser = await this.accountRepository.find({ where: { name: userid } })
             return {
                 loginUser,
-                accountUser
+                // accountUser
             }
         } catch (error) {
             throw new HttpException(error.message, HttpStatus.BAD_REQUEST)
