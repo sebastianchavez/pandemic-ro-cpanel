@@ -1,10 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Login } from "src/login/entities/login.entity";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('account')
-export class Account {
-    @PrimaryGeneratedColumn('increment')
-    account_id: number;
-
+@Entity('char')
+export class Char {
+    
     @Column()
     agi: number;
     
@@ -17,7 +16,7 @@ export class Account {
     @Column()
     body: number;
 
-    @Column()
+    @PrimaryGeneratedColumn('increment')
     char_id: number;
 
     @Column()
@@ -78,7 +77,7 @@ export class Account {
     head_top: number;
     
     @Column()
-    homun: number;
+    homun_id: number;
     
     @Column()
     hotkey_rowshift: number;
@@ -104,7 +103,7 @@ export class Account {
     @Column()
     karma: number;
     
-    @Column()
+    @Column({ type: 'time' })
     last_login: Date;
     
     @Column()
@@ -148,4 +147,9 @@ export class Account {
     
     @Column()
     partner_id: number;
+
+
+    @ManyToOne(type => Login, l => l.account_id)
+    @JoinColumn({ name: 'account_id' })
+    account_id: number;
 }

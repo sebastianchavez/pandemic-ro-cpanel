@@ -1,9 +1,10 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { LoginDto } from 'src/login/dtos/login.dto';
-import { QueryLoginDto } from 'src/login/dtos/query-login.dto';
+import { QueryGetLoginDto } from 'src/login/dtos/query-get-login.dto';
+import { QueryGetLoginsDto } from 'src/login/dtos/query-get-logins.dto';
 import { Login } from 'src/login/entities/login.entity';
-import { Repository } from 'typeorm';
+import { Repository, Like } from 'typeorm';
 
 @Injectable()
 export class LoginService {
@@ -14,9 +15,29 @@ export class LoginService {
     ) {
     }
 
-    async getLogins(query: QueryLoginDto) {
+    async getLogins(query: QueryGetLoginsDto) {
         try {
-            const user = await this.loginRepository.find({ select: { account_id: true, email: true }, where: { email: query.email.toLowerCase() } })
+            const { email, ip, name, limit, page } = query
+            const where = {};
+            const select = {
+                account_id: true, 
+                userid: true, 
+                email: true, 
+                last_ip: true, 
+                chars: true
+            }
+            if(email){
+                where['email'] = Like(`%${email}%`)
+            }
+            if(ip){
+                where['ip'] = Like(`%${ip}%`)
+            }
+            if(name){
+                where['chars'] = {
+                    name: Like(`%${name}%`)
+                } 
+            }
+            const user = await this.loginRepository.find({ select, relations: ['chars'], where })
             return {
                 user
             }
@@ -25,7 +46,7 @@ export class LoginService {
         }
     }
 
-    async getLogin(query: QueryLoginDto){
+    async getLogin(query: QueryGetLoginDto){
         try {
             const { email, userid } = query
             const where = {}

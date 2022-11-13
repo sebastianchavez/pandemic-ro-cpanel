@@ -1,6 +1,6 @@
-import { IsEmail, IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { IsEmail, IsOptional, IsString } from "class-validator";
 
-export class QueryLoginDto {
+export class QueryGetLoginDto {
     @IsEmail()
     @IsOptional()
     readonly email?: string;

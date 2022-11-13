@@ -2,7 +2,7 @@ import { Body, Controller, Get, HttpStatus, Post, Put, Query, Res } from '@nestj
 import { Response } from 'express';
 import { HealthService } from './services/health/health.service';
 
-@Controller('health')
+@Controller('api/health')
 export class HealthController {
 
     constructor(
