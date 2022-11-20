@@ -50,9 +50,20 @@ export class CharService {
                         ch.char_id,
                         ch.account_id,
                         l.last_ip,
-                        l.email
+                        l.email,
+                        lo.admin,
+                        lo.end_date_ban,
+                        lo.end_date_bg_lock,
+                        lo.end_date_woe_lock,
+                        lo.is_ban,
+                        lo.is_bg_lock,
+                        lo.is_woe_lock,
+                        lo.start_date_ban,
+                        lo.start_date_bg_lock,
+                        lo.start_date_woe_lock
                     from ${this.schema}.char ch 
                     inner join ${this.schema}.login l on l.account_id = ch.account_id
+                    left join ${this.schema}.lock lo on l.account_id = lo.account_id
                     ${where};`)
                 console.log({totalRegister})
             return {

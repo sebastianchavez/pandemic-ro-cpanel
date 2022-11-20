@@ -66,5 +66,5 @@ export class Login {
     @JoinColumn({ name: 'account_id' })
     @JoinTable({ name: 'char' })
     @OneToMany(type => Char, c => c.account_id)
-    chars: Char[]
+    char?: Char[]
 }

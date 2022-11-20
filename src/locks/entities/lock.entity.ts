@@ -1,5 +1,6 @@
-import { Column, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
+@Entity('lock')
 export class Lock {
 
     @PrimaryGeneratedColumn('increment')
@@ -39,8 +40,11 @@ export class Lock {
     admin: string; // que admin realiza ultima operación
     
     @Column()
+    
+    
+    @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
     created_at: Date; // fecha registro
     
-    @Column()
+    @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" })
     updated_at: Date; // fecha última actualización
 }
