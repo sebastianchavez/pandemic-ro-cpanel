@@ -57,10 +57,8 @@ export class LoginService {
                 where['userid'] = userid;
             }
             const loginUser = await this.loginRepository.findOne({ select: { account_id: true, email: true }, where })
-            // const accountUser = await this.accountRepository.find({ where: { name: userid } })
             return {
                 loginUser,
-                // accountUser
             }
         } catch (error) {
             throw new HttpException(error.message, HttpStatus.BAD_REQUEST)

@@ -3,7 +3,7 @@ import { Column, Entity, JoinColumn, JoinTable, OneToMany, PrimaryColumn, Primar
 
 @Entity('login')
 export class Login {
-    @PrimaryGeneratedColumn('increment')
+    @PrimaryGeneratedColumn()
     account_id: number;
 
     @Column({ unique: true })

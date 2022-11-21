@@ -36,36 +36,37 @@ export class CharService {
                     select 
                         count(*) 
                     from ${this.schema}.char ch 
+                    left join ${this.schema}.lock lo on lo.account_id = ch.account_id
                     inner join ${this.schema}.login l on l.account_id = ch.account_id
                     ${where}`)
             where += ` LIMIT ${limit} OFFSET ${(page * limit) - limit }`
-            const chars = await this.charRepository.query(`
-                    select 
-                        ch.name,
-                        ch.base_level,
-                        ch.job_level,
-                        ch.last_map,
-                        ch.last_x,
-                        ch.last_y,
-                        ch.char_id,
-                        ch.account_id,
-                        l.last_ip,
-                        l.email,
-                        lo.admin,
-                        lo.end_date_ban,
-                        lo.end_date_bg_lock,
-                        lo.end_date_woe_lock,
-                        lo.is_ban,
-                        lo.is_bg_lock,
-                        lo.is_woe_lock,
-                        lo.start_date_ban,
-                        lo.start_date_bg_lock,
-                        lo.start_date_woe_lock
-                    from ${this.schema}.char ch 
-                    inner join ${this.schema}.login l on l.account_id = ch.account_id
-                    left join ${this.schema}.lock lo on l.account_id = lo.account_id
-                    ${where};`)
-                console.log({totalRegister})
+            const querySQL = `
+            select 
+                ch.name,
+                ch.base_level,
+                ch.job_level,
+                ch.last_map,
+                ch.last_x,
+                ch.last_y,
+                ch.char_id,
+                ch.account_id,
+                l.last_ip,
+                l.email,
+                lo.admin,
+                lo.end_date_ban,
+                lo.end_date_bg_lock,
+                lo.end_date_woe_lock,
+                lo.is_ban,
+                lo.is_bg_lock,
+                lo.is_woe_lock,
+                lo.start_date_ban,
+                lo.start_date_bg_lock,
+                lo.start_date_woe_lock
+            from ${this.schema}.char ch 
+            left join ${this.schema}.lock lo on lo.account_id = ch.account_id
+            inner join ${this.schema}.login l on l.account_id = ch.account_id
+            ${where};`
+            const chars = await this.charRepository.query(querySQL)
             return {
                 chars,
                 totalRegister: Number(totalRegister[0]['count(*)'])
