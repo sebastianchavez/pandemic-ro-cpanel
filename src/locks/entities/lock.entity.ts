@@ -13,6 +13,9 @@ export class Lock {
     is_bg_lock: boolean; // bloqueo de bg
 
     @Column()
+    count_bg_locks: number;
+
+    @Column()
     start_date_bg_lock: Date; // desde
 
     @Column()
@@ -20,6 +23,9 @@ export class Lock {
 
     @Column()
     is_woe_lock: boolean; // bloqueo de mapas de woe
+
+    @Column()
+    count_woe_locks: number;
 
     @Column()
     start_date_woe_lock: Date; // desde
@@ -31,6 +37,9 @@ export class Lock {
     is_ban: boolean; // baneo
 
     @Column()
+    count_ban: number;
+
+    @Column()
     start_date_ban: Date;  // desde
     
     @Column()
@@ -38,8 +47,6 @@ export class Lock {
     
     @Column()
     admin: string; // que admin realiza ultima operación
-    
-    @Column()
     
     
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
