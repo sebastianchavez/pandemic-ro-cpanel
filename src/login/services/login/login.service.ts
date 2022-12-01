@@ -87,6 +87,6 @@ export class LoginService {
         login.old_group = 0;
         login.web_auth_token_enabled = 0;
         return this.loginRepository.insert(login)
-
     }
+
 }

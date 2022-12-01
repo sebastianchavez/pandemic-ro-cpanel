@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RequestUpdateLockUserDto } from 'src/locks/dtos/request-update-lock-user.dto';
 import { Lock } from 'src/locks/entities/lock.entity';
+import { Login } from 'src/login/entities/login.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -10,6 +11,8 @@ export class LocksService {
     constructor(
         @InjectRepository(Lock)
         private lockRepository: Repository<Lock>,
+        @InjectRepository(Login)
+        private loginRepository: Repository<Login>
     ){}
 
     async saveOrUpdateLockService(body: RequestUpdateLockUserDto){
@@ -43,6 +46,12 @@ export class LocksService {
                 newLock.start_date_bg_lock = body.start_date_bg_lock;
                 newLock.start_date_woe_lock = body.start_date_woe_lock;
                 await this.lockRepository.insert(newLock)
+            }
+
+            if(body.is_ban){
+                await this.loginRepository.update({account_id: body.account_id}, {state: 1})
+            } else {
+                await this.loginRepository.update({account_id: body.account_id}, {state: 0})
             }
             return {
                 message: 'Jugador actualizado'

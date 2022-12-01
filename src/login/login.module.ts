@@ -14,6 +14,6 @@ import { LoginService } from './services/login/login.service';
   ],
   controllers: [LoginController],
   providers:[LoginService],
-  exports:[TypeOrmModule]
+  exports:[TypeOrmModule, LoginService]
 })
 export class LoginModule {}

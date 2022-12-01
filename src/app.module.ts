@@ -10,6 +10,8 @@ import { InventoryModule } from './inventory/inventory.module';
 import { StorageModule } from './storage/storage.module';
 import { HealthModule } from './health/health.module';
 import { CharModule } from './char/char.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { TasksService } from './locks/services/tasks/tasks.service';
 
 @Module({
   imports: [
@@ -20,7 +22,8 @@ import { CharModule } from './char/char.module';
     InventoryModule,
     StorageModule,
     HealthModule,
-    CharModule
+    CharModule,
+    ScheduleModule.forRoot()
   ],
   controllers: [AppController],
   providers: [AppService],
