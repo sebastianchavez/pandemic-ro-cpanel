@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Lock } from 'src/locks/entities/lock.entity';
+import { Login } from 'src/login/entities/login.entity';
 import { LessThan, MoreThan, Repository } from 'typeorm';
 
 // * * * * * *
@@ -20,6 +21,8 @@ export class TasksService {
     constructor(
         @InjectRepository(Lock)
         private lockRepository: Repository<Lock>,
+        @InjectRepository(Login)
+        private loginRepository: Repository<Login>
     ) {}
 
     @Cron(CronExpression.EVERY_DAY_AT_10AM)
@@ -60,6 +63,7 @@ export class TasksService {
                 ban.end_date_ban = null;
                 ban.count_ban = ban.count_ban ? ban.count_ban + 1 : 1;
                 ban.is_ban = false;
+                await this.loginRepository.update({account_id: ban.account_id},{state: 0})
                 await this.lockRepository.save(ban)
             }
             this.logger.debug(`bans: ${JSON.stringify(bans)}`);
