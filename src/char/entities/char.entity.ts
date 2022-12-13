@@ -1,155 +1,159 @@
-import { Login } from "src/login/entities/login.entity";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Login } from 'src/login/entities/login.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('char')
 export class Char {
-    
-    @Column()
-    agi: number;
-    
-    @Column()
-    ap: number;
+  @Column()
+  agi: number;
 
-    @Column()
-    base_exp: number;
+  @Column()
+  ap: number;
 
-    @Column()
-    body: number;
+  @Column()
+  base_exp: number;
 
-    @PrimaryGeneratedColumn('increment')
-    char_id: number;
+  @Column()
+  body: number;
 
-    @Column()
-    char_num: number;
+  @PrimaryGeneratedColumn('increment')
+  char_id: number;
 
-    @Column()
-    child: number;
+  @Column()
+  char_num: number;
 
-    @Column()
-    clan_id: number;
+  @Column()
+  child: number;
 
-    @Column()
-    class: number;
+  @Column()
+  clan_id: number;
 
-    @Column()
-    clothes_color: number;
+  @Column()
+  class: number;
 
-    @Column()
-    con: number;
+  @Column()
+  clothes_color: number;
 
-    @Column()
-    crt: number;
+  @Column()
+  con: number;
 
-    @Column()
-    delete_date: number;
+  @Column()
+  crt: number;
 
-    @Column()
-    dex: number;
+  @Column()
+  delete_date: number;
 
-    @Column()
-    elemental_id: number;
-    
-    @Column()
-    fame: number;
+  @Column()
+  dex: number;
 
-    @Column()
-    father: number;
+  @Column()
+  elemental_id: number;
 
-    @Column()
-    font: number;
-    
-    @Column()
-    guild_id: number;
-    
-    @Column()
-    hair: number;
-    
-    @Column()
-    hair_color: number;
-    
-    @Column()
-    head_bottom: number;
-    
-    @Column()
-    head_mid: number;
-    
-    @Column()
-    head_top: number;
-    
-    @Column()
-    homun_id: number;
-    
-    @Column()
-    hotkey_rowshift: number;
-    
-    @Column()
-    hotkey_rowshift2: number;
-    
-    @Column()
-    hp: number;
-    
-    @Column()
-    int: number;
-    
-    @Column()
-    inventory_slots: number;
-    
-    @Column()
-    job_exp: number;
-    
-    @Column()
-    job_level: number;
-    
-    @Column()
-    karma: number;
-    
-    @Column({ type: 'time' })
-    last_login: Date;
-    
-    @Column()
-    last_map: string;
-    
-    @Column()
-    last_x: number;
-    
-    @Column()
-    last_y: number;
-    
-    @Column()
-    luk: number;
-    
-    @Column()
-    manner: number;
-    
-    @Column()
-    max_ap: number;
-    
-    @Column()
-    max_hp: number;
-    
-    @Column()
-    max_sp: number;
-    
-    @Column()
-    mother: number;
-    
-    @Column()
-    moves: number;
-    
-    @Column()
-    name: string;
-    
-    @Column()
-    online: number;
-    
-    @Column()
-    option: number;
-    
-    @Column()
-    partner_id: number;
+  @Column()
+  fame: number;
 
+  @Column()
+  father: number;
 
-    @ManyToOne(type => Login, l => l.account_id)
-    @JoinColumn({ name: 'account_id' })
-    account_id: number;
+  @Column()
+  font: number;
+
+  @Column()
+  guild_id: number;
+
+  @Column()
+  hair: number;
+
+  @Column()
+  hair_color: number;
+
+  @Column()
+  head_bottom: number;
+
+  @Column()
+  head_mid: number;
+
+  @Column()
+  head_top: number;
+
+  @Column()
+  homun_id: number;
+
+  @Column()
+  hotkey_rowshift: number;
+
+  @Column()
+  hotkey_rowshift2: number;
+
+  @Column()
+  hp: number;
+
+  @Column()
+  int: number;
+
+  @Column()
+  inventory_slots: number;
+
+  @Column()
+  job_exp: number;
+
+  @Column()
+  job_level: number;
+
+  @Column()
+  karma: number;
+
+  @Column({ type: 'time' })
+  last_login: Date;
+
+  @Column()
+  last_map: string;
+
+  @Column()
+  last_x: number;
+
+  @Column()
+  last_y: number;
+
+  @Column()
+  luk: number;
+
+  @Column()
+  manner: number;
+
+  @Column()
+  max_ap: number;
+
+  @Column()
+  max_hp: number;
+
+  @Column()
+  max_sp: number;
+
+  @Column()
+  mother: number;
+
+  @Column()
+  moves: number;
+
+  @Column()
+  name: string;
+
+  @Column()
+  online: number;
+
+  @Column()
+  option: number;
+
+  @Column()
+  partner_id: number;
+
+  @ManyToOne((type) => Login, (l) => l.account_id)
+  @JoinColumn({ name: 'account_id' })
+  account_id: number;
 }

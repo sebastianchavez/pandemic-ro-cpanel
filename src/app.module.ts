@@ -12,6 +12,8 @@ import { HealthModule } from './health/health.module';
 import { CharModule } from './char/char.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TasksService } from './locks/services/tasks/tasks.service';
+import { DeviceModule } from './device/device.module';
+import { ProcessLockModule } from './process-lock/process-lock.module';
 
 @Module({
   imports: [
@@ -23,9 +25,11 @@ import { TasksService } from './locks/services/tasks/tasks.service';
     StorageModule,
     HealthModule,
     CharModule,
-    ScheduleModule.forRoot()
+    ScheduleModule.forRoot(),
+    DeviceModule,
+    ProcessLockModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

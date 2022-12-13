@@ -8,12 +8,12 @@ import { LocksController } from './locks.controller';
 import { LocksService } from './services/locks/locks.service';
 
 @Module({
-  imports:[
+  imports: [
     TypeOrmModule.forFeature([Lock]),
     TypeOrmModule.forFeature([Login]),
   ],
-  providers:[LocksService, TasksService],
+  providers: [LocksService, TasksService],
   controllers: [LocksController],
-  exports: [TypeOrmModule]
+  exports: [TypeOrmModule],
 })
 export class LocksModule {}

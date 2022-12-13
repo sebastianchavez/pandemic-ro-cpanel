@@ -12,6 +12,6 @@ import { CharService } from './services/char/char.service';
   ],
   controllers: [CharController],
   providers: [CharService],
-  exports:[TypeOrmModule]
+  exports: [TypeOrmModule],
 })
 export class CharModule {}

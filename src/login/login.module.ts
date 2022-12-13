@@ -7,13 +7,13 @@ import { LoginController } from './login.controller';
 import { LoginService } from './services/login/login.service';
 
 @Module({
-  imports:[
+  imports: [
     TypeOrmModule.forFeature([Char]),
     TypeOrmModule.forFeature([Login]),
     HttpModule,
   ],
   controllers: [LoginController],
-  providers:[LoginService],
-  exports:[TypeOrmModule, LoginService]
+  providers: [LoginService],
+  exports: [TypeOrmModule, LoginService],
 })
 export class LoginModule {}
