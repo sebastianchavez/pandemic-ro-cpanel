@@ -12,16 +12,10 @@ export class ProcessLock {
   processlock_id: number;
 
   @Column()
-  name: string;
+  typeValidation: string;
 
   @Column()
-  pid: number;
-
-  @Column()
-  size: number;
-
-  @Column()
-  type: string;
+  value: string;
 
   @CreateDateColumn({
     type: 'timestamp',

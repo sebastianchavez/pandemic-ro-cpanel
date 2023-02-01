@@ -7,8 +7,7 @@ import { CharService } from './services/char/char.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Char]),
-    TypeOrmModule.forFeature([Login]),
+    TypeOrmModule.forFeature([Char,Login]),
   ],
   controllers: [CharController],
   providers: [CharService],

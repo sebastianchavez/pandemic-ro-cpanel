@@ -11,9 +11,10 @@ import { StorageModule } from './storage/storage.module';
 import { HealthModule } from './health/health.module';
 import { CharModule } from './char/char.module';
 import { ScheduleModule } from '@nestjs/schedule';
-import { TasksService } from './locks/services/tasks/tasks.service';
 import { DeviceModule } from './device/device.module';
 import { ProcessLockModule } from './process-lock/process-lock.module';
+import { PrizeModule } from './prize/prize.module';
+import { ItemModule } from './item/item.module';
 
 @Module({
   imports: [
@@ -28,6 +29,8 @@ import { ProcessLockModule } from './process-lock/process-lock.module';
     ScheduleModule.forRoot(),
     DeviceModule,
     ProcessLockModule,
+    PrizeModule,
+    ItemModule,
   ],
   controllers: [AppController],
   providers: [AppService],

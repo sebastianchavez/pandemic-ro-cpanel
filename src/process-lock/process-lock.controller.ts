@@ -8,8 +8,10 @@ import {
   Post,
   Put,
   Res,
+  Query
 } from '@nestjs/common';
 import { Response } from 'express';
+import { QueryProcessLockDto } from './dtos/query-process-lock.dto';
 import { RequestSaveProcessLockDto } from './dtos/request-save-process-lock.dto';
 import { RequestUpdateProcessLockDto } from './dtos/request-update-process-lock.dto';
 import { ProcessLockService } from './services/process-lock/process-lock.service';
@@ -19,9 +21,9 @@ export class ProcessLockController {
   constructor(private processLockService: ProcessLockService) {}
 
   @Get('get-process-lock')
-  async getProcessLock(@Res() res: Response) {
+  async getProcessLock(@Query() query: QueryProcessLockDto ,@Res() res: Response) {
     try {
-      const response = await this.processLockService.getProcessLock();
+      const response = await this.processLockService.getProcessLock(query);
       res.status(HttpStatus.OK).send(response);
     } catch (error) {
       throw error;
