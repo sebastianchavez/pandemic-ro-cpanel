@@ -39,5 +39,4 @@ export class PrizeController {
             throw error;
         }
     }
-
 }

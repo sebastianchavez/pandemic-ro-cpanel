@@ -9,7 +9,7 @@ export class PrizeService {
   schema: string = process.env.DB_SCHEMA;
     
     constructor(
-        @InjectRepository(PrizeConnection)
+         @InjectRepository(PrizeConnection)
         private prizeConnectionRepository: Repository<PrizeConnection>,
         
     ){}

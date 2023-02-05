@@ -15,6 +15,7 @@ import { DeviceModule } from './device/device.module';
 import { ProcessLockModule } from './process-lock/process-lock.module';
 import { PrizeModule } from './prize/prize.module';
 import { ItemModule } from './item/item.module';
+import { ConnectionUserModule } from './connection-user/connection-user.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { ItemModule } from './item/item.module';
     ProcessLockModule,
     PrizeModule,
     ItemModule,
+    ConnectionUserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
