@@ -8,8 +8,7 @@ import { LocksService } from './services/locks/locks.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Lock]),
-    TypeOrmModule.forFeature([Login]),
+    TypeOrmModule.forFeature([Lock,Login]),
   ],
   providers: [LocksService, TasksService],
   controllers: [LocksController],
