@@ -30,12 +30,6 @@ export class TaskRankingPvpService {
     @Cron('0 0 0 * * 1')
     async createPrizesRankingPvp(){
         try {
-            let timer = 0;
-            let interval = setInterval(() => {
-                timer++
-            },1000)
-            console.log('CRON RUN');
-            
             const ranking = await this.pvpRankingRepository.find({
                 order: {
                     kill: 'DESC'
