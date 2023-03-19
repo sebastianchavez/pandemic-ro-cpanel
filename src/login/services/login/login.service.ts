@@ -8,6 +8,9 @@ import { Repository, Like } from 'typeorm';
 
 @Injectable()
 export class LoginService {
+
+  schema: string = process.env.DB_SCHEMA;
+ 
   constructor(
     @InjectRepository(Login)
     private loginRepository: Repository<Login>,
@@ -48,20 +51,34 @@ export class LoginService {
     }
   }
 
-  async getLogin(query: QueryGetLoginDto) {
+  async getLogin(queryParams: QueryGetLoginDto) {
     try {
-      const { email, userid } = query;
-      const where = {};
-      if (email) {
-        where['email'] = email.toLowerCase();
-      }
-      if (userid) {
-        where['userid'] = userid;
-      }
-      const loginUser = await this.loginRepository.findOne({
-        select: { account_id: true, email: true },
-        where,
-      });
+      
+      const { email } = queryParams;
+      const query = `SELECT 
+        l.userid,
+        l.email,
+        l.account_id,
+        l.sex,
+        l.state,
+        ch.name,
+        ch.class,
+        ch.base_level,
+        ch.job_level,
+        ch.last_map,
+        ch.last_x,
+        ch.last_y,
+        ch.str,
+        ch.agi,
+        ch.vit,
+        ch.int,
+        ch.dex,
+        ch.luk
+        FROM ${this.schema}.login l
+        LEFT JOIN ${this.schema}.char ch ON l.account_id = ch.account_id
+        WHERE l.email = '${email}';`
+      const loginUser = await this.loginRepository.query(query)
+      
       return {
         loginUser,
       };
