@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { QueryGetCharsDto } from 'src/char/dtos/query-get-chars.dto';
-import { Char } from 'src/char/entities/char.entity';
+import { QueryGetCharsDto } from '../../../char/dtos/query-get-chars.dto';
+import { Char } from '../../../char/entities/char.entity';
 import { Like, Repository } from 'typeorm';
 
 @Injectable()

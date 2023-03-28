@@ -1,9 +1,9 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { LoginDto } from 'src/login/dtos/login.dto';
-import { QueryGetLoginDto } from 'src/login/dtos/query-get-login.dto';
-import { QueryGetLoginsDto } from 'src/login/dtos/query-get-logins.dto';
-import { Login } from 'src/login/entities/login.entity';
+import { LoginDto } from '../../../login/dtos/login.dto';
+import { QueryGetLoginDto } from '../../../login/dtos/query-get-login.dto';
+import { QueryGetLoginsDto } from '../../../login/dtos/query-get-logins.dto';
+import { Login } from '../../../login/entities/login.entity';
 import { Repository, Like } from 'typeorm';
 
 @Injectable()

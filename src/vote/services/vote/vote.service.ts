@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { VoteDto } from 'src/vote/dtos/vote.dto';
-import { Vote } from 'src/vote/entities/vote.entity';
+import { VoteDto } from '../../../vote/dtos/vote.dto';
+import { Vote } from '../../../vote/entities/vote.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

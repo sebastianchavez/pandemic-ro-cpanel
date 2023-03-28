@@ -1,4 +1,4 @@
-import { Char } from 'src/char/entities/char.entity';
+import { Char } from '../../char/entities/char.entity';
 import {
   Column,
   Entity,

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ConnectionUser } from 'src/connection-user/entities/connection-user.entity';
+import { ConnectionUser } from '../../../connection-user/entities/connection-user.entity';
 import { MoreThan, Repository } from 'typeorm';
 
 @Injectable()

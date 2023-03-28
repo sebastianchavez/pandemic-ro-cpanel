@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RequestSavePrizePvpDto } from 'src/prize-pvp/dtos/request-save-prize-pvp.dto';
-import { PrizePvp } from 'src/prize-pvp/entities/prize-pvp.entity';
+import { RequestSavePrizePvpDto } from '../../../prize-pvp/dtos/request-save-prize-pvp.dto';
+import { PrizePvp } from '../../../prize-pvp/entities/prize-pvp.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TasksService } from 'src/locks/services/tasks/tasks.service';
-import { Login } from 'src/login/entities/login.entity';
+import { TasksService } from '../locks/services/tasks/tasks.service';
+import { Login } from '../login/entities/login.entity';
 import { Lock } from './entities/lock.entity';
 import { LocksController } from './locks.controller';
 import { LocksService } from './services/locks/locks.service';

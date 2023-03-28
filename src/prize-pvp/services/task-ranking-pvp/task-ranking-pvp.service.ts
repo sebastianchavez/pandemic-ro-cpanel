@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { InjectRepository } from '@nestjs/typeorm';
-import { PrizePvp } from 'src/prize-pvp/entities/prize-pvp.entity';
-import { PrizeUserPvp } from 'src/prize-pvp/entities/prize-user-pvp.entity';
-import { PvpRanking } from 'src/prize-pvp/entities/pvpranking.entity';
+import { PrizePvp } from '../../../prize-pvp/entities/prize-pvp.entity';
+import { PrizeUserPvp } from '../../../prize-pvp/entities/prize-user-pvp.entity';
+import { PvpRanking } from '../../../prize-pvp/entities/pvpranking.entity';
 import { LessThan, MoreThan, Repository } from 'typeorm';
 
 // * * * * * *

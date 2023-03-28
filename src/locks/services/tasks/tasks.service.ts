@@ -1,8 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Lock } from 'src/locks/entities/lock.entity';
-import { Login } from 'src/login/entities/login.entity';
+import { Lock } from '../../../locks/entities/lock.entity';
+import { Login } from '../../../login/entities/login.entity';
 import { LessThan, MoreThan, Repository } from 'typeorm';
 
 // * * * * * *

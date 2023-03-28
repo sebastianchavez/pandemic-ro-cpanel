@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { QueryGetItemsDto } from 'src/item/dtos/query-get-items.dto';
-import { Item } from 'src/item/entities/item.entity';
+import { QueryGetItemsDto } from '../../../item/dtos/query-get-items.dto';
+import { Item } from '../../../item/entities/item.entity';
 import { Like, Repository } from 'typeorm';
 
 @Injectable()

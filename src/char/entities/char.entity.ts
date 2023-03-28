@@ -1,4 +1,4 @@
-import { Login } from 'src/login/entities/login.entity';
+import { Login } from '../../login/entities/login.entity';
 import {
   Column,
   Entity,

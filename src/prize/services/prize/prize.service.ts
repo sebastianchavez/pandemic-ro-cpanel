@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RequestSavePrizeConnectionDto } from 'src/prize/dtos/request-save-prize-connection.dto';
-import { PrizeConnection } from 'src/prize/entities/prize-connection.entity';
+import { RequestSavePrizeConnectionDto } from '../../../prize/dtos/request-save-prize-connection.dto';
+import { PrizeConnection } from '../../../prize/entities/prize-connection.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RequestUpdateLockUserDto } from 'src/locks/dtos/request-update-lock-user.dto';
-import { Lock } from 'src/locks/entities/lock.entity';
-import { Login } from 'src/login/entities/login.entity';
+import { RequestUpdateLockUserDto } from '../../../locks/dtos/request-update-lock-user.dto';
+import { Lock } from '../../../locks/entities/lock.entity';
+import { Login } from '../../../login/entities/login.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
