@@ -13,6 +13,7 @@ import { ItemModule } from './item/item.module';
 import { ConnectionUserModule } from './connection-user/connection-user.module';
 import { VoteModule } from './vote/vote.module';
 import { PrizePvpModule } from './prize-pvp/prize-pvp.module';
+import { PvpRankingModule } from './pvp-ranking/pvp-ranking.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { PrizePvpModule } from './prize-pvp/prize-pvp.module';
     ConnectionUserModule,
     VoteModule,
     PrizePvpModule,
+    PvpRankingModule,
   ],
   controllers: [AppController],
   providers: [AppService],
