@@ -17,7 +17,8 @@ export class PvpRankingService {
             let queryRankingNow = `
             SELECT 
                 p.char_id, 
-                c.name as user, 
+                c.name as user,
+                c.class, 
                 c.base_level,
                 c.job_level,
                 p.kill, 
