@@ -22,7 +22,7 @@ export class PvpRankingService {
                 c.job_level,
                 p.kill, 
                 p.death,
-                g.name,
+                g.name as guild,
                 g.emblem_id,
                 g.emblem_len,
                 g.emblem_data
@@ -31,7 +31,6 @@ export class PvpRankingService {
             LEFT JOIN ${this.schema}.guild g ON g.guild_id = c.guild_id
             ORDER BY p.kill DESC;
             `
-            
             return this.pvpRankingRepository.query(queryRankingNow, [])
         } catch (error) {
             throw error
